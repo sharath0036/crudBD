@@ -25,6 +25,11 @@
                         "icon": "bi bi-plus-circle"
                     },
                     {
+                        "name": "ShowWithTotals",
+                        "url": "ReceiptsShowWithTotals.html",
+                        "icon": "bi bi-plus-circle"
+                      },
+                    {
                         "name": "Delete",
                         "url": "ReceiptsDeleteSSR.html",
                         "icon": "bi bi-plus-circle"
@@ -109,7 +114,8 @@
                         "HtmlTags": {
                             "Show": {
                                 "title": "Credit",
-                                "isShown": true
+                                "isShown": true,
+                                "footerFormatter": "totalFormatter"
                             },
                             "Create": {
                                 "title": "Credit",
