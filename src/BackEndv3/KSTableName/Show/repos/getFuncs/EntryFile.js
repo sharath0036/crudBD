@@ -8,7 +8,9 @@ import {
     GetDataSortByColumnFunc as GetDataSortByColumnFuncDal,
     GetRowDataFunc as GetRowDataFuncDal,
     GetMaxRowFunc as GetMaxRowFuncDal,
-    GetLastRowFunc as GetLastRowFuncDal
+    GetLastRowFunc as GetLastRowFuncDal,
+    GetMinRowFunc as GetMinRowFuncDal,
+    GetFirstRowFunc as GetFirstRowFuncDal
 } from '../../dals/getFuncs/EntryFile.js';
 
 import {
@@ -138,8 +140,30 @@ let GetLastRowFunc = async () => {
 
     return GetLastRowFuncDal();
 };
+let GetMinRowFunc = async () => {
+    if (ConfigJson.isSequelize) {
+        return await GetDataOnlyFuncDalsForSequelize();
+    };
+
+    if (ConfigJson.isMongoDb) {
+        return GetDataOnlyFuncDalsForMongoDb();
+    };
+
+    return GetMinRowFuncDal();
+};
+let GetFirstRowFunc = async () => {
+    if (ConfigJson.isSequelize) {
+        return await GetDataOnlyFuncDalsForSequelize();
+    };
+
+    if (ConfigJson.isMongoDb) {
+        return GetDataOnlyFuncDalsForMongoDb();
+    };
+
+    return GetFirstRowFuncDal();
+};
 export {
     GetFunc, GetDataOnlyFunc, GetImagesFunc, GetBodyCheckFunc, GetFromModalFunc,
     GetFromModalUuidFunc, GetWithJoinsFunc, GetDataSortByColumnFunc, GetRowDataFunc,
-    GetMaxRowFunc,GetLastRowFunc
+    GetMaxRowFunc,GetLastRowFunc,GetMinRowFunc,GetFirstRowFunc
 };

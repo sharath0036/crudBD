@@ -8,7 +8,9 @@ import {
     GetDataSortByColumnFunc as GetDataSortByColumnFuncRepo,
     GetRowDataFunc as GetRowDataFuncRepo,
     GetMaxRowFunc as GetMaxRowFuncRepo,
-    GetLastRowFunc as GetLastRowFuncRepo
+    GetLastRowFunc as GetLastRowFuncRepo,
+    GetMinRowFunc as GetMinRowFuncRepo,
+    GetFirstRowFunc as GetFirstRowFuncRepo
 } from '../../repos/getFuncs/EntryFile.js';
 
 let GetFunc = async (req, res) => {
@@ -128,8 +130,28 @@ let GetLastRowFunc = async (req, res) => {
 
     res.status(200).send(JSON.stringify(LocalFromRepo));
 };
+let GetMinRowFunc = async (req, res) => {
+    let LocalFromRepo = await GetMinRowFuncRepo();
+
+    if (LocalFromRepo === false) {
+        res.status(500).send(LocalFromRepo.KReason);
+        return;
+    };
+
+    res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+let GetFirstRowFunc = async (req, res) => {
+    let LocalFromRepo = await GetFirstRowFuncRepo();
+
+    if (LocalFromRepo === false) {
+        res.status(500).send(LocalFromRepo.KReason);
+        return;
+    };
+
+    res.status(200).send(JSON.stringify(LocalFromRepo));
+};
 export {
     GetFunc, GetDataOnlyFunc, GetImagesFunc, GetBodyCheckFunc, GetFromModalFunc,
     GetFromModalUuidFunc, GetWithJoinsFunc, GetDataSortByColumnFunc, GetRowDataFunc,
-    GetMaxRowFunc,GetLastRowFunc
+    GetMaxRowFunc,GetLastRowFunc,GetMinRowFunc,GetFirstRowFunc
 };

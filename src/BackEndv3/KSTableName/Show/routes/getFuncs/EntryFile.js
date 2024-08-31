@@ -5,7 +5,7 @@ var router = express.Router();
 import {
     GetFunc, GetDataOnlyFunc, GetImagesFunc, GetBodyCheckFunc, GetFromModalFunc,
     GetFromModalUuidFunc, GetWithJoinsFunc, GetDataSortByColumnFunc, GetRowDataFunc,
-    GetMaxRowFunc,GetLastRowFunc
+    GetMaxRowFunc,GetLastRowFunc,GetMinRowFunc,GetFirstRowFunc
 } from '../../controllers/getFuncs/EntryFile.js';
 
 router.get('/', GetFunc);
@@ -19,8 +19,8 @@ router.get('/Sort/:Column', GetDataSortByColumnFunc);
 router.get('/:id', GetRowDataFunc);
 router.get('/MaxRow', GetMaxRowFunc);
 router.get('/LastRow', GetLastRowFunc);
-router.get('/MinRow', GetMaxRowFunc);
-router.get('/FirstRow', GetLastRowFunc);
+router.get('/MinRow', GetMinRowFunc);
+router.get('/FirstRow', GetFirstRowFunc);
 router.get('/Filter/:FilterKey/:FilterValue', GetDataOnlyFunc);
 
 export { router };
